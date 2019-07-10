@@ -70,3 +70,102 @@ const decodeWords = str => {
 };
 
 console.log(decodeWords("craft block argon meter bells brown croon droop"));
+
+function createCharacter(
+  name,
+  nickName,
+  race,
+  origin,
+  attack,
+  defense,
+  weapon
+) {
+  return {
+    name,
+    nickName,
+    race,
+    origin,
+    attack,
+    defense,
+    weapon,
+    describe() {
+      return `${this.name} is a ${this.race} from ${this.origin} ${
+        this.weapon ? `who uses ${this.weapon}` : ""
+      }`;
+    },
+    evaluateFight(character) {
+      return `Your opponent takes ${
+        character.defense > this.attack ? 0 : this.attack - character.defense
+      } damage and you receive ${character.attack - this.defense} damage`;
+    }
+  };
+}
+
+const characters = [
+  createCharacter(
+    "Gandalf the White",
+    "gandalf",
+    "Wizard ",
+    "Middle Earth ",
+    10,
+    6,
+    "wizard staff"
+  ),
+  createCharacter(
+    "Bilbo Baggins ",
+    " bilbo ",
+    "Hobbit",
+    "The Shire",
+    2,
+    1,
+    "Ring"
+  ),
+  createCharacter(
+    "Frodo Baggins",
+    "frodo",
+    "Hobbit",
+    "The Shire",
+    3,
+    2,
+    "Barrow Blade"
+  ),
+  createCharacter(
+    "Legolas  ",
+    "legolas",
+    " Elf",
+    "Woodland Realm",
+    8,
+    5,
+    "Bow and Arrow"
+  ),
+  createCharacter(
+    "Aragorn son of Arathorn",
+    "aragorn",
+    "Man",
+    "Dunnedain",
+    6,
+    8,
+    "Anduril"
+  ),
+  createCharacter(
+    "Arwen Undomiel",
+    "aragorn",
+    "Half-Elf",
+    "Rivendell",
+    6,
+    8,
+    "Hadhafang"
+  )
+];
+
+console.log(
+  characters.find(character => character.nickName === "aragorn").describe()
+);
+
+const hobbitCharacters = characters.filter(
+  character => character.race === "Hobbit"
+);
+console.log(hobbitCharacters);
+
+const highDamage = characters.filter(character => character.attack > 5);
+console.log(highDamage);
