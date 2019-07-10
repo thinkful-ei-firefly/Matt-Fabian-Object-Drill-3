@@ -37,14 +37,23 @@ const myObject = {
 console.log(myObject.meals[3]);
 
 const arr = [
-  { name: "bill", jobTitle: "coder" },
-  { name: "bob", jobTitle: "developer" },
-  { name: "thorton", jobTitle: "dragon" }
+  { name: "matt", jobTitle: "owner"},
+  { name: "bill", jobTitle: "coder", boss: "matt" },
+  { name: "bob", jobTitle: "developer", boss: "matt" },
+  { name: "will", jobTitle: "developer"},
+  { name: "thorton", jobTitle: "dragon", boss: "matt" }
 ];
 
 const flow = array =>
-  array.map(({ name, jobTitle }) =>
-    console.log(`This is ${name} and he is a(n) ${jobTitle}`)
+  array.map(({ name, jobTitle, boss }) => {
+  	boss = boss?'reports to '+boss:'doesn\'t report to anyone';
+  	console.log(`${jobTitle} ${name} ${boss}.`)
+  	}
   );
 
 flow(arr);
+
+
+
+
+
