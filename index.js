@@ -22,6 +22,29 @@ const consoler = object => {
 
 consoler(obj);
 
-const myObject = {meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']}; 
+const myObject = {
+  meals: [
+    "breakfast",
+    "second breakfast",
+    "elevenses",
+    "lunch",
+    "afternoon tea",
+    "dinner",
+    "supper"
+  ]
+};
 
 console.log(myObject.meals[3]);
+
+const arr = [
+  { name: "bill", jobTitle: "coder" },
+  { name: "bob", jobTitle: "developer" },
+  { name: "thorton", jobTitle: "dragon" }
+];
+
+const flow = array =>
+  array.map(({ name, jobTitle }) =>
+    console.log(`This is ${name} and he is a(n) ${jobTitle}`)
+  );
+
+flow(arr);
