@@ -37,23 +37,36 @@ const myObject = {
 console.log(myObject.meals[3]);
 
 const arr = [
-  { name: "matt", jobTitle: "owner"},
+  { name: "matt", jobTitle: "owner" },
   { name: "bill", jobTitle: "coder", boss: "matt" },
   { name: "bob", jobTitle: "developer", boss: "matt" },
-  { name: "will", jobTitle: "developer"},
+  { name: "will", jobTitle: "developer" },
   { name: "thorton", jobTitle: "dragon", boss: "matt" }
 ];
 
 const flow = array =>
   array.map(({ name, jobTitle, boss }) => {
-  	boss = boss?'reports to '+boss:'doesn\'t report to anyone';
-  	console.log(`${jobTitle} ${name} ${boss}.`)
-  	}
-  );
+    boss = boss ? "reports to " + boss : "doesn't report to anyone";
+    console.log(`${jobTitle} ${name} ${boss}.`);
+  });
 
 flow(arr);
 
+const cipher = {
+  a: 2,
+  b: 3,
+  c: 4,
+  d: 5
+};
+const decode = (word, obj) => {
+  return word[0] in cipher ? word[obj[word[0]] - 1] : " ";
+};
 
+const decodeWords = str => {
+  return str
+    .split(" ")
+    .map(word => decode(word, cipher))
+    .join("");
+};
 
-
-
+console.log(decodeWords("craft block argon meter bells brown croon droop"));
